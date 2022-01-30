@@ -20,8 +20,8 @@ namespace farkleDotNet.Models
 
     private Random        rand        = new Random();
     private static double totalWeight = 18;
-    public   int[]       rollArray   { get; set; } = new int[(int)totalWeight];
 
+    protected int[]     rollArray   { get; set; } = new int[(int)totalWeight];
     protected ArrayList sidesOfDice = new ArrayList();
     protected double    sideOneWeight   { get; set; }
     protected double    sideTwoWeight   { get; set; }
