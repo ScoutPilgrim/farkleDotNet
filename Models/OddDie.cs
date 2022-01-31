@@ -7,6 +7,9 @@ namespace farkleDotNet.Models
   {
     public OddDie ()
     {
+      //Init dieTypeId
+      this.dieTypeId = 1;
+
       //Init Weights of Die
       this.sideOneWeight   = 4;
       this.sideTwoWeight   = 2;

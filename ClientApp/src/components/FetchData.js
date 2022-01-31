@@ -5,34 +5,30 @@ export class FetchData extends Component {
 
   constructor (props) {
     super(props);
-    this.state = { forecasts: [], loading: true };
+    this.state = { dice: [], loading: true };
 
-    fetch('api/SampleData/WeatherForecasts')
+    fetch('api/FarkleGameBoard/GetDie')
       .then(response => response.json())
       .then(data => {
-        this.setState({ forecasts: data, loading: false });
+        this.setState({ dice: data, loading: false });
         console.log(data)
       });
   }
 
-  static renderForecastsTable (forecasts) {
+  static renderDiceTable (dice) {
     return (
       <table className='table table-striped'>
         <thead>
           <tr>
-            <th>Date</th>
-            <th>Temp. (C)</th>
-            <th>Temp. (F)</th>
-            <th>Summary</th>
+            <th>DieId</th>
+            <th>Current Value</th>
           </tr>
         </thead>
         <tbody>
-          {forecasts.map(forecast =>
-            <tr key={forecast.dateFormatted}>
-              <td>{forecast.dateFormatted}</td>
-              <td>{forecast.temperatureC}</td>
-              <td>{forecast.temperatureF}</td>
-              <td>{forecast.summary}</td>
+          {dice.map(die =>
+            <tr key={die.dieId}>
+              <td>{die.dieId}</td>
+              <td>{die.currVal}</td>
               <div className="col">
                   <button type="button" id="diceBut1" className="btn btn-primary clickable">0</button>
               </div>
@@ -46,7 +42,7 @@ export class FetchData extends Component {
   render () {
     let contents = this.state.loading
       ? <p><em>Loading...</em></p>
-      : FetchData.renderForecastsTable(this.state.forecasts);
+      : FetchData.renderDiceTable(this.state.dice);
 
     return (
       <div>

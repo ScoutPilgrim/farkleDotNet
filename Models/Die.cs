@@ -23,14 +23,17 @@ namespace farkleDotNet.Models
 
     protected int[]     rollArray   { get; set; } = new int[(int)totalWeight];
     protected ArrayList sidesOfDice = new ArrayList();
+
     protected double    sideOneWeight   { get; set; }
     protected double    sideTwoWeight   { get; set; }
     protected double    sideThreeWeight { get; set; }
     protected double    sideFourWeight  { get; set; }
     protected double    sideFiveWeight  { get; set; }
     protected double    sideSixWeight   { get; set; }
+    protected int       dieTypeId       { get; set; }
 
-    public    int       currVal      { get; set; }
+    public int          currVal         { get; set; }
+    public int          dieId           { get; set; }
 
     protected void initializeRollWeightArray()
     {

@@ -7,6 +7,9 @@ namespace farkleDotNet.Models
   {
     public FairDie ()
     {
+      //Init dieTypeId
+      this.dieTypeId = 0;
+
       //Init Weights of Die
       this.sideOneWeight   = 3;
       this.sideTwoWeight   = 3;
