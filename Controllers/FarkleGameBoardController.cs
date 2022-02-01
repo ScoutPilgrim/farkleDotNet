@@ -10,20 +10,26 @@ namespace farkleDotNet.Controllers
   [Route("api/[controller]")]
   public class FarkleGameBoardController: Controller
   {
-    public static int startingDieId = 1;
-    public static int[] dummyDiceTypeIds = new int[] {0,0,0,0,0,0};
-    public Player dummyPlayer = new Player(dummyDiceTypeIds, startingDieId);
+    public Gameboard gameboard = new Gameboard();
 
     [HttpGet("[action]")]
     public List<Die> GetDie()
     {
-      return dummyPlayer.dieAllowance;
+      return gameboard.HumanPlayer.dieAllowance;
     }
 
-    [HttpPost("[action]")]
-    public int rollDice()
+    [HttpGet("[action]")]
+    public int[] RollDice()
     {
-      return 1;
+      int[] returnArr = new int[Player.maxDie];
+      int returnArrPointer = 0;
+      foreach(Die die in gameboard.HumanPlayer.dieAllowance)
+      {
+        int thisRoll = die.rollDie();
+        returnArr[returnArrPointer] = thisRoll;
+        returnArrPointer++;
+      }
+      return returnArr;
     }
   }
 }

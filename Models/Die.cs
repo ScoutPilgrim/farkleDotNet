@@ -34,6 +34,7 @@ namespace farkleDotNet.Models
 
     public int          currVal         { get; set; }
     public int          dieId           { get; set; }
+    public bool         isSelected      { get; set; } = false;
 
     protected void initializeRollWeightArray()
     {
